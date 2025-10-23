@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato - OBSF</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <nav aria-label="Navegação principal">
+      <ul>
+        <li><a class="active" href="/" aria-current="page">Início</a></li>
+        <li><a href="/sobrenos">Sobre Nós</a></li>
+        <li><a href="/projetos">Projetos</a></li>
+        <li><a href="/como-ajudar">Como Ajudar</a></li>
+        <li><a href="/contato">Contato</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/lojinha">Lojinha</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main role="main" aria-labelledby="titulo-contato">
+    <section>
+      <header class="auth-header">
+        <h1 id="titulo-contato">Fale Conosco</h1>
+        <p>Envie uma mensagem, dúvida ou proposta de parceria.</p>
+      </header>
+
+      <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+        <section class="error-messages" aria-live="assertive" aria-atomic="true">
+          <h2>❌ Erro de Validação</h2>
+          <ul>
+            <% errors.forEach(function(error) { %>
+              <li><%= error.msg %></li>
+            <% }); %>
+          </ul>
+        </section>
+      <% } %>
+
+      <form class="auth-form" action="/contato" method="post" novalidate>
+        <fieldset>
+          <legend>Mensagem</legend>
+
+          <label for="nome">Nome completo</label>
+          <input id="nome" name="nome" type="text" placeholder="Seu nome" required autocomplete="name"
+                 value="<%= typeof fields !== 'undefined' ? fields.nome : '' %>"> 
+
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" placeholder="seu@exemplo.com" required autocomplete="email"
+                 value="<%= typeof fields !== 'undefined' ? fields.email : '' %>">
+
+          <label for="assunto">Assunto</label>
+          <input id="assunto" name="assunto" type="text" placeholder="Sobre o que deseja falar" required
+                 value="<%= typeof fields !== 'undefined' ? fields.assunto : '' %>">
+
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem" required><%= typeof fields !== 'undefined' ? fields.mensagem : '' %></textarea>
+        </fieldset>
+
+        <button type="submit" class="btn-primary">Enviar mensagem</button>
+      </form>
+
+      <nav class="auth-links" aria-label="Acesso auxiliar">
+        <p><a class="btn-link" href="/">Voltar ao início</a></p>
+        <p><a href="/login">Acessar minha conta</a></p>
+        <p><a href="/cadastro">Quero me cadastrar</a></p>
+      </nav>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2024 OBSF - Organização Brasileira Sem Fome</p>
+    <p>Juntos contra a fome no Brasil</p>
+  </footer>
+</body>
+</html>

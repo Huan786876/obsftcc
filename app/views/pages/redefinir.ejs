@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redefinir Senha - OBSF</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <nav aria-label="Navegação principal">
+      <ul>
+        <li><a class="active" href="/" aria-current="page">Início</a></li>
+        <li><a href="/sobrenos">Sobre Nós</a></li>
+        <li><a href="/projetos">Projetos</a></li>
+        <li><a href="/como-ajudar">Como Ajudar</a></li>
+        <li><a href="/contato">Contato</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/lojinha">Lojinha</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section aria-labelledby="titulo-redefinir">
+      <header>
+        <h1 id="titulo-redefinir">Redefinir Senha</h1>
+        <p>Digite seu e-mail para receber as instruções de redefinição.</p>
+      </header>
+
+      <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+        <section class="error-messages" aria-live="assertive" aria-atomic="true">
+          <h2>❌ Erro de Validação</h2>
+          <ul>
+            <% errors.forEach(function(error) { %>
+              <li><%= error.msg %></li>
+            <% }); %>
+          </ul>
+        </section>
+      <% } %>
+      <form method="post" action="/redefinir">
+        <fieldset>
+          <legend>Recuperação</legend>
+
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" required placeholder="Digite seu e-mail"
+                 value="<%= typeof fields !== 'undefined' ? fields.email : '' %>"> 
+                 </fieldset>
+
+        <button type="submit">Enviar</button>
+      </form>
+
+      <nav aria-label="Acesso auxiliar">
+        <p><a href="/login">Lembrei minha senha</a></p>
+        <p><a href="/cadastro">Quero me cadastrar</a></p>
+      </nav>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2024 OBSF - Organização Brasileira Sem Fome</p>
+    <p>Juntos contra a fome no Brasil</p>
+  </footer>
+</body>
+</html>
