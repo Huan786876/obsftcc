@@ -2,6 +2,7 @@
 
 const express = require('express');
 const app = express();
+const dotenv = require("dotenv").config();
 
 // 1. IMPORTAÇÃO DAS ROTAS (CORREÇÃO DO ERRO)
 // Importação simples (não desestruturada)
@@ -21,7 +22,7 @@ app.use('/', mainRouter);
 app.use('/', authRouter);
 
 // 5. INICIALIZAÇÃO DO SERVIDOR
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.APP_PORT;
 app.listen(PORT, () => {
     console.log(`Servidor online\nHttp://localhost:${PORT}`);
 });
