@@ -261,7 +261,7 @@ a.btn-entrar {
 
 
 form, fieldset {
-  
+  display: flex;
 }
 form button[type="submit"] {
   align-self: stretch;    
